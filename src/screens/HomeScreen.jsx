@@ -43,35 +43,36 @@ export default function HomeScreen({ navigation }) {
                     <CardPokemon 
                     onPress={() => navigation.navigate('Details', { pokemonUrl: item.url })}
                     name={item.name}
+                    url={item.url}
                    />
                 )}
+                numColumns={2}
+                contentContainerStyle={styles.listContent}
+                columnWrapperStyle={styles.column}
                 onEndReached={LoadMorePokemons}
                 onEndReachedThreshold={0.5}
                 ListFooterComponent={
                     isFetchinMore && <ActivityIndicator style={{
                         marginVertical: 20 
-                    }} />
+                    }} /> 
                 }
-            />
+            /> 
+
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        paddingTop: 40,
-        paddingHorizontal: 16
+        flex: 1,   
     },
-    item: {
-        padding: 20,
-        backgroundColor: '#eee',
-        marginBottom: 10,
-        borderRadius: 8
+    
+    listContent: {
+        paddingHorizontal:8, paddingVertical: 10
     },
-    text: {
-        fontWeight: 'bold',
-        fontSize: 16
+    column: {
+        justifiContent: 'space-between', 
+
     }
 
 
